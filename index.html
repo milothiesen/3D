@@ -49,6 +49,10 @@
 
 <script type="text/javascript">
 
+// add javascript monitor
+(function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//rawgit.com/mrdoob/stats.js/master/build/stats.min.js';document.head.appendChild(script);})()
+
+
 
 
 
@@ -118,7 +122,7 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
 
 // add cube
 
-  var geometry = new THREE.BoxBufferGeometry( 20, 30, 20 );
+  var geometry = new THREE.BoxBufferGeometry( 40, 60, 40 );
 
   var cubeMaterials = 
   [
@@ -146,7 +150,7 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
   
 
 
-  camera.position.z = 0.5;
+  camera.position.z = 15;
 
   // add ambient light
   var ambientLight = new THREE.AmbientLight( 0xFFFFFF //light color
@@ -172,9 +176,9 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
 
   var update = function( )
   {
-    cube.rotation.x -= 0.001;
+    cube.rotation.x -= 0.00008;
     // cube.rotation.x -= SPEED * 2;
-    cube.rotation.y += 0.001;
+    cube.rotation.y += 0.00008;
     var time = Date.now( ) * 0.0005;
 
     // light1.postion.x = Math.sin( time * 0.7 ) * 30;
