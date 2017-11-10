@@ -89,16 +89,28 @@
 
 
 
-// add sphere
-  var geometry1 = new THREE.SphereBufferGeometry( 5, 32, 32 );
-  var material1 = new THREE.MeshLambertMaterial( {color: 0xFFFFFF} );
-  var sphere = new THREE.Mesh( geometry1, material1 );
-  scene.add( sphere );
+// // add sphere
+//   var geometry1 = new THREE.SphereBufferGeometry( 5, 32, 32 ); // radius, segmentsWidth, segmentsHeight
+//   var material1 = new THREE.MeshLambertMaterial( {color: 0xFFFFFF} );
+//   var sphere = new THREE.Mesh( geometry1, material1 );
+//   scene.add( sphere );
 
-  sphere.position.x = 0;
-  sphere.position.y = 0;
-  sphere.position.z = 0;
+//   sphere.position.x = 0;
+//   sphere.position.y = 0;
+//   sphere.position.z = 0;
 
+
+
+
+var sphereGeom =  new THREE.SphereGeometry( 5, 32, 16 ); // radius, segmentsWidth, segmentsHeight
+  mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
+  // mirrorCubeCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
+  scene.add( mirrorSphereCamera );
+  var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget } );
+  mirrorSphere = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
+  mirrorSphere.position.set(0,0,0);
+  mirrorSphereCamera.position = mirrorSphere.position;
+  scene.add(mirrorSphere);
 
 
 
@@ -181,6 +193,19 @@
 // draw scene
   var render = function( )
   {
+      // move the CubeCamera to the position of the object
+  //    that has a reflective surface, "take a picture" in each direction
+  //    and apply it to the surface.
+  // need to hide surface before and after so that it does not
+  //    "get in the way" of the camera
+
+  mirrorSphere.visible = false;
+  mirrorSphereCamera.update( renderer, scene );
+  mirrorSphere.visible = true;
+
+
+
+
   renderer.render( scene, camera );
   };
 
