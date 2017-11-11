@@ -137,6 +137,7 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
   mirrorSphereCamera.position = mirrorSphere.position;
   scene.add(mirrorSphere);
 
+
  //Finally add the sound to the mesh
 scene.add( sound );
 
@@ -147,7 +148,6 @@ scene.add( sound );
   var cubeMaterials = 
   [
     new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DP205278.jpg' ), side: THREE.DoubleSide } ), // Outter Right Side
-    // new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DT8789.jpg' ), side: THREE.DoubleSide } ), // Inner Right Side
 
     new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DP205279.jpg' ), side: THREE.DoubleSide } ), //Outter Left Side
 
@@ -156,7 +156,6 @@ scene.add( sound );
     new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DT1157.jpg' ), side: THREE.DoubleSide } ), // inside bottom?
 
     new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DP205280.jpg' ), side: THREE.DoubleSide } ), //Both Sides Top
-    
 
     new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DP205281.jpg' ), side: THREE.DoubleSide } ), //Both Sides Bottom
   ];
@@ -183,7 +182,7 @@ scene.add( sound );
 
 
 
-  var geometry2 = new THREE.BoxBufferGeometry( 1000, 1000, 1000 )
+  var geometry2 = new THREE.BoxBufferGeometry( 800, 800, 800 )
   var cubeMaterialsSkybox = 
   [
     new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader( ).load( 'images/oasisnight/oasisnight_ft.png'), side: THREE.DoubleSide }),
