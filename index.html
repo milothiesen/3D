@@ -131,19 +131,19 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
 
   var cubeMaterials = 
   [
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205278.jpg' ), side: THREE.DoubleSide } ), // Outter Right Side
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DP205278.jpg' ), side: THREE.DoubleSide } ), // Outter Right Side
     // new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DT8789.jpg' ), side: THREE.DoubleSide } ), // Inner Right Side
 
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205279.jpg' ), side: THREE.DoubleSide } ), //Outter Left Side
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DP205279.jpg' ), side: THREE.DoubleSide } ), //Outter Left Side
 
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DT8788.jpg' ), side: THREE.DoubleSide } ), //inside top?
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DT8788.jpg' ), side: THREE.DoubleSide } ), //inside top?
 
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DT1157.jpg' ), side: THREE.DoubleSide } ), // inside bottom?
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DT1157.jpg' ), side: THREE.DoubleSide } ), // inside bottom?
 
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205280.jpg' ), side: THREE.DoubleSide } ), //Both Sides Top
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DP205280.jpg' ), side: THREE.DoubleSide } ), //Both Sides Top
     
 
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205281.jpg' ), side: THREE.DoubleSide } ), //Both Sides Bottom
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DP205281.jpg' ), side: THREE.DoubleSide } ), //Both Sides Bottom
 
 
     // new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205282.jpg' ), side: THREE.DoubleSide } ), //Outter Front Side
@@ -168,7 +168,27 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
   
 
 
-  camera.position.z = 100;
+  camera.position.z = 220;
+
+
+
+  var geometry2 = new THREE.BoxBufferGeometry( 1000, 1000, 1000 )
+  var cubeMaterialsSkybox = 
+  [
+    new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader( ).load( 'images/oasisnight/oasisnight_ft.png'), side: THREE.DoubleSide }),
+    new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader( ).load( 'images/oasisnight/oasisnight_bk.png'), side: THREE.DoubleSide }),
+    new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader( ).load( 'images/oasisnight/oasisnight_up.png'), side: THREE.DoubleSide }),
+    new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader( ).load( 'images/oasisnight/oasisnight_dn.png'), side: THREE.DoubleSide }),
+    new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader( ).load( 'images/oasisnight/oasisnight_rt.png'), side: THREE.DoubleSide }),
+    new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader( ).load( 'images/oasisnight/oasisnight_lf.png'), side: THREE.DoubleSide })
+  ];
+
+  var cubeMaterialSkybox = new THREE.MeshFaceMaterial( cubeMaterialsSkybox );
+  var cubeSkybox = new THREE.Mesh( geometry2, cubeMaterialSkybox);
+  scene.add( cubeSkybox );
+
+ 
+  
 
   // add ambient light
   var ambientLight = new THREE.AmbientLight( 0xFFFFFF //light color
@@ -176,40 +196,14 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
   );
   scene.add( ambientLight );
 
-  // var light1 = new THREE.PointLight( 0xFF0040, 2, 50 );
-  // scene.add( light1 );
-
-  // var light2 = new THREE.PointLight( 0x0040FF, 2.5, 50 );
-  // scene.add( light2 );
-
-  // var light3 = new THREE.PointLight( 0x80FF80, 3, 50 );
-  // scene.add( light3 );
-
-  // game logic
-  
-
-
-
 
 
   var update = function( )
   {
     cube.rotation.x += 0.000005;
-    // cube.rotation.x -= SPEED * 2;
     cube.rotation.y += 0.0005;
     var time = Date.now( ) * 0.0005;
 
-    // light1.postion.x = Math.sin( time * 0.7 ) * 30;
-    // light1.postion.y = Math.con( time * 0.5 ) * 40;
-    // light1.postion.z = Math.con( time * 0.3 ) * 30;
-
-    // light2.postion.x = Math.con( time * 0.7 ) * 30;
-    // light2.postion.y = Math.sin( time * 0.5 ) * 40;
-    // light2.postion.z = Math.sin( time * 0.3 ) * 30;
-
-    // light3.postion.x = Math.sin( time * 0.7 ) * 30;
-    // light3.postion.y = Math.con( time * 0.5 ) * 40;
-    // light3.postion.z = Math.con( time * 0.3 ) * 30;
   };
 
 // draw scene
