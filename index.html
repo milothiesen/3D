@@ -17,23 +17,28 @@
   #container { 
     width: 100%;
     height: 150px;
+
 }
 
 #buttons {
     font-family: 'Orbitron', sans-serif;
-    font-size: 20px;
-    color:white;
+    font-size: 40px;
+    color:#f5f3a0;
     background-color: #000;
     position:absolute;
     z-index:5;
     text-align: center;
     bottom:0px;
     width : 100%;
-    height : 10%;
+    height : 20%;
     display: flex;
     justify-content: center; /* align horizontal */
     align-items: center; /* align vertical */
 
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
 }
 
 
@@ -122,7 +127,7 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
 
 // add cube
 
-  var geometry = new THREE.BoxBufferGeometry( 40, 60, 40 );
+  var geometry = new THREE.BoxBufferGeometry( 60, 60, 60 );
 
   var cubeMaterials = 
   [
@@ -163,7 +168,7 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
   
 
 
-  camera.position.z = 15;
+  camera.position.z = 100;
 
   // add ambient light
   var ambientLight = new THREE.AmbientLight( 0xFFFFFF //light color
@@ -189,9 +194,9 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
 
   var update = function( )
   {
-    cube.rotation.x -= 0.00008;
+    cube.rotation.x += 0.000005;
     // cube.rotation.x -= SPEED * 2;
-    cube.rotation.y += 0.00008;
+    cube.rotation.y += 0.0005;
     var time = Date.now( ) * 0.0005;
 
     // light1.postion.x = Math.sin( time * 0.7 ) * 30;
@@ -244,7 +249,7 @@ GameLoop( );
 <div id="container">
         Three.js Container
         <div id="buttons">
-            Me Met Metro Metro Me Me Met 1984.433.31 Met Me Me Metropolitan 
+            <a href="https://www.metmuseum.org/art/collection#!?q=moon&perPage=20&department=19&showOnly=openaccess&sortBy=Relevance&sortOrder=asc&offset=0&pageSize=0">------:::::: Moon Metro Moon ::::::------ </a>
         </div>
     </div>
 </body> 
