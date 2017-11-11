@@ -95,21 +95,24 @@ a:-webkit-any-link {
 
 
 
+//Create an AudioListener and add it to the camera
+var listener = new THREE.AudioListener();
+camera.add( listener );
 
+//Create the PositionalAudio object (passing in the listener)
+var sound = new THREE.PositionalAudio( listener );
 
+//Load a sound and set it as the PositionalAudio object's buffer
+var audioLoader = new THREE.AudioLoader();
+audioLoader.load( 'sounds/EclipseSample.mp3', function( buffer ) {
+  sound.setBuffer( buffer );
+  sound.setRefDistance( 20 );
+  sound.play();
+});
 
-// // add sphere
-//   var geometry1 = new THREE.SphereBufferGeometry( 5, 32, 32 ); // radius, segmentsWidth, segmentsHeight
-//   var material1 = new THREE.MeshLambertMaterial( {color: 0xFFFFFF} );
-//   var sphere = new THREE.Mesh( geometry1, material1 );
-//   scene.add( sphere );
+//this is the object the above audio will be added to
 
-//   sphere.position.x = 0;
-//   sphere.position.y = 0;
-//   sphere.position.z = 0;
-
-
-
+// add sphere
 
 var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWidth, segmentsHeight
   mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
@@ -121,7 +124,8 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
   mirrorSphereCamera.position = mirrorSphere.position;
   scene.add(mirrorSphere);
 
-
+ //Finally add the sound to the mesh
+scene.add( sound );
 
 
 
@@ -144,12 +148,6 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
     
 
     new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'images/DP205281.jpg' ), side: THREE.DoubleSide } ), //Both Sides Bottom
-
-
-    // new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205282.jpg' ), side: THREE.DoubleSide } ), //Outter Front Side
-
-
-    // new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205280.jpg'), side: THREE.DoubleSide } ), //Outter Back Side
   ];
   
 
@@ -168,7 +166,9 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
   
 
 
-  camera.position.z = 220;
+  camera.position.z = 300;
+
+
 
 
 
@@ -186,8 +186,6 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
   var cubeMaterialSkybox = new THREE.MeshFaceMaterial( cubeMaterialsSkybox );
   var cubeSkybox = new THREE.Mesh( geometry2, cubeMaterialSkybox);
   scene.add( cubeSkybox );
-
- 
   
 
   // add ambient light
@@ -245,6 +243,8 @@ GameLoop( );
         <div id="buttons">
             <a href="https://www.metmuseum.org/art/collection#!?q=moon&perPage=20&department=19&showOnly=openaccess&sortBy=Relevance&sortOrder=asc&offset=0&pageSize=0">------:::::: Moon Metro Moon ::::::------ </a>
         </div>
+        <a href="https://archive.org/details/EclipseSample">Eclipse Sample
+by Tom Bassett</a>
     </div>
 </body> 
 </html>
