@@ -126,12 +126,25 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
 
   var cubeMaterials = 
   [
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Scofield_Thayer_MET_1984.433.31.jpg' ), side: THREE.DoubleSide } ), //Right Side
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Scofield_Thayer_MET_1984.433.31.jpg' ), side: THREE.DoubleSide } ), //Left Side
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Scofield_Thayer_MET_1984.433.31.jpg' ), side: THREE.DoubleSide } ), //Top
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Scofield_Thayer_MET_1984.433.31.jpg' ), side: THREE.DoubleSide } ), //Bottom
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Scofield_Thayer_MET_1984.433.31.jpg' ), side: THREE.DoubleSide } ), //Front
-    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Scofield_Thayer_MET_1984.433.31.jpg'), side: THREE.DoubleSide } ), //Back
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205278.jpg' ), side: THREE.DoubleSide } ), // Outter Right Side
+    // new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DT8789.jpg' ), side: THREE.DoubleSide } ), // Inner Right Side
+
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205279.jpg' ), side: THREE.DoubleSide } ), //Outter Left Side
+
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DT8788.jpg' ), side: THREE.DoubleSide } ), //inside top?
+
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DT1157.jpg' ), side: THREE.DoubleSide } ), // inside bottom?
+
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205280.jpg' ), side: THREE.DoubleSide } ), //Both Sides Top
+    
+
+    new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205281.jpg' ), side: THREE.DoubleSide } ), //Both Sides Bottom
+
+
+    // new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205282.jpg' ), side: THREE.DoubleSide } ), //Outter Front Side
+
+
+    // new THREE.MeshLambertMaterial( { map: new THREE.TextureLoader( ).load( 'DP205280.jpg'), side: THREE.DoubleSide } ), //Outter Back Side
   ];
   
 
