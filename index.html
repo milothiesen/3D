@@ -37,9 +37,22 @@
 
 }
 
+#mutebutton {
+  position: float right;
+}
+
 a:-webkit-any-link {
   text-decoration: none;
 }
+
+ /*Icon style*/
+ .fa-volume-off {
+   width: 14px;
+   color: red;
+ }
+ .fa-volume-up {
+   color: #3ad27a;
+ }
 
 
 
@@ -50,6 +63,8 @@ a:-webkit-any-link {
 <script src="js/OrbitControls.js"></script>
 <script src="js/OBJLoader.js"></script>
 <script src="js/MTLLoader.js"></script>
+<script src="https://use.fontawesome.com/2a4057f0ca.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 <script type="text/javascript">
@@ -94,6 +109,7 @@ a:-webkit-any-link {
 
 
 
+//Creating a positional audio source and attaching it to the mirror ball
 
 //Create an AudioListener and add it to the camera
 var listener = new THREE.AudioListener();
@@ -101,13 +117,13 @@ camera.add( listener );
 
 //Create the PositionalAudio object (passing in the listener)
 var sound = new THREE.PositionalAudio( listener );
-
+sound.name = "background_audio"
 //Load a sound and set it as the PositionalAudio object's buffer
 var audioLoader = new THREE.AudioLoader();
 audioLoader.load( 'sounds/EclipseSample.mp3', function( buffer ) {
   sound.setBuffer( buffer );
   sound.setRefDistance( 20 );
-  sound.play();
+  sound.pause();
 });
 
 //this is the object the above audio will be added to
@@ -126,8 +142,6 @@ var sphereGeom =  new THREE.SphereGeometry( 5, 500, 500 ); // radius, segmentsWi
 
  //Finally add the sound to the mesh
 scene.add( sound );
-
-
 
 // add cube
 
@@ -238,13 +252,41 @@ scene.add( sound );
 GameLoop( );
 
 </script>
+
 <div id="container">
         Three.js Container
         <div id="buttons">
             <a href="https://www.metmuseum.org/art/collection#!?q=moon&perPage=20&department=19&showOnly=openaccess&sortBy=Relevance&sortOrder=asc&offset=0&pageSize=0">------:::::: Moon Metro Moon ::::::------ </a>
+        <div id="mutebutton">
+          
+    
+          <a id ="mute"><i class="fa fa-volume-off" aria-hidden="true"></i></a>
         </div>
-        <a href="https://archive.org/details/EclipseSample">Eclipse Sample
-by Tom Bassett</a>
+        </div>
+
     </div>
+<script type="text/javascript">
+
+//adding mute functionality
+
+
+
+document.getElementById('mute').addEventListener('click', function() {
+     var audio = scene.getObjectByName("background_audio");
+     if (audio.isPlaying == true) {
+      audio.pause();
+     } else {  
+        audio.play();
+     }
+});
+  </script>
+  <script>
+$(function() {
+    $('a').click(function() {
+        $(this).find('i').toggleClass('fa-volume-up fa-volume-off');
+    });
+});
+
+</script>
 </body> 
 </html>
